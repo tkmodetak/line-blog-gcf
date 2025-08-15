@@ -1,46 +1,11 @@
- {
+{
     "name": "line-blog-gcf",
     "version": "1.0.0",
-    "description": "LINE Blog Generator with Google Cloud 
-  Functions",
+    "description": "LINE Blog Generator 
+  with Claude API",
     "main": "index.js",
-    "scripts": {
-      "start": "functions-framework --target=lineWebhook 
-  --port=8080",
-      "test": "curl -X POST http://localhost:8080 -H 
-  'Content-Type: application/json' -d 
-  '{\"events\":[{\"type\":\"message\",\"message\":{\"type\":
-  \"text\",\"text\":\"テストメッセージ\"}}]}'"
-    },
     "dependencies": {
       "@anthropic-ai/sdk": "^0.59.0",
-      "@google-cloud/functions-framework": "^3.3.0",
-      "@google/generative-ai": "^0.24.1",
-      "axios": "^1.6.0",
-      "googleapis": "^126.0.1"
+      "axios": "^1.6.0"
     }
-  }
-
-  ②vercel.json を作成：
-  - ファイル名：vercel.json
-  - 内容：
-  {
-    "version": 2,
-    "functions": {
-      "api/webhook.js": {
-        "maxDuration": 30
-      }
-    },
-    "env": {
-      "CLAUDE_API_KEY": "@claude-api-key",
-      "LINE_CHANNEL_SECRET": "@line-channel-secret",
-      "LINE_CHANNEL_ACCESS_TOKEN":
-  "@line-channel-access-token"
-    },
-    "rewrites": [
-      {
-        "source": "/webhook",
-        "destination": "/api/webhook"
-      }
-    ]
   }
